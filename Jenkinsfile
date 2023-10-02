@@ -36,7 +36,7 @@ pipeline {
 
                 success{
 
- 
+                   emailext attachmentsPattern: '**/build.log',
 
                     mail to: "uzairrzafar1@gmail.com",
 
