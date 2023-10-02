@@ -35,11 +35,13 @@ pipeline {
  
 
                 success{
-
+   emailext attachmentsPattern: '**/build.log',
               
-                                  body: "Build was successful",
-                                  subject: "Build Status Email",
-                                  to: "uzairrzafar1@gmail.com"
+                     mail to: "uzairrzafar1@gmail.com",
+
+                    subject: "Build Status Email",
+
+                     body: "Build was successful"
 
  
 
