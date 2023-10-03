@@ -16,11 +16,17 @@ pipeline {
 
                  success{
 
-                 emailext(
+                echo "Sending email notification..."
+                    emailext(
                         to: 'uzairali998@gmail.com',
                         subject: 'Build Status Email',
                         body: 'Build was successful',
-                        attachLog: true
+                        attachLog: true,
+                        mimeType: 'text/plain',
+                        recipientProviders: [culprits(), developers()],
+                        replyTo: '$DEFAULT_REPLYTO',
+                        replyToAddress: 'jenkins@example.com',
+                        debug: true
                     )
 
                 }
