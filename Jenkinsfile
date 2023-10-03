@@ -17,12 +17,12 @@ pipeline {
                  success{
 
                 echo "Sending email notification..."
-                       emailext(
-                        to: 'uzairali998@gmail.com',
-                        subject: 'Build Status Email',
-                        body: 'Build was successful',
-                       
-                    )
+                          mail to: "uzairali998@gmail.com",
+
+                    subject: "Build Status Email",
+
+                     body: "Build was successful"
+                  
 
                 }
 
