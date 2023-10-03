@@ -35,12 +35,10 @@ pipeline {
  
 
                 success{
-             def attachmentsPattern = '**/build.log'
-                        emailext body: "Build was successful. Attached log file: ${attachmentsPattern}",
-                                  attachmentsPattern: attachmentsPattern,
-                                  subject: "Build Status Email",
-                                  to: "uzairrzafar1@gmail.com"
-                  
+                            emailext attachLog: true,
+                            subject: "Build Status Email",
+                            body: "Build was successful",
+                            to: "uzairali998@gmail.com"
 
  
 
