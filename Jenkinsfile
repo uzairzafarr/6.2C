@@ -1,193 +1,85 @@
 pipeline {
 
- 
-
     agent any
-
- 
-
- 
 
     stages {
 
- 
-
         stage('Build') {
 
- 
 
             steps {
-
- 
 
                 echo "Using maven to build the code"
 
- 
-
- 
-
-            }
-
- 
-
+            } 
             post {
 
- 
+                 success{
 
-                success{
-                            emailext attachLog: true,
-                            subject: "Build Status Email",
-                            body: "Build was successful",
-                            to: "uzairali998@gmail.com"
+                    mail to: "uzairali998@gmail.com",
 
- 
+                    subject: "Build Status Email",
+
+                     body: "Build was successful"
 
                 }
 
- 
-
             }
 
- 
-
         }
-
- 
-
- 
 
         stage('Unit and Integration Tests') {
 
- 
-
             steps {
-
- 
 
                 echo "Using JUnit for Unit and Integration Testing."
 
- 
-
             }
-
- 
 
         }
 
- 
-
-        stage('Code Analysis') {
-
- 
+         stage('Code Analysis') {
 
             steps {
 
- 
+                 echo "Use tools like SonarQube for code analysis"
 
-                echo "Use tools like SonarQube for code analysis"
-
- 
-
-            }
-
- 
-
+               }
         }
-
- 
-
- 
 
         stage('Security Scan') {
 
- 
-
-            steps {
-
- 
+           steps {
 
                 echo "Using OWASP ZAP for security scanning"
 
- 
-
-            }
-
- 
+           }
 
         }
-
- 
-
- 
 
         stage('Deploy to Staging') {
 
- 
-
             steps {
-
- 
 
                  echo "Using tools like AWS CLI to deploy to  staging server"
-
- 
-
- 
-
-            }
-
- 
-
+           }
         }
 
- 
+         stage('Integration Tests on Staging') {
 
- 
-
-        stage('Integration Tests on Staging') {
-
- 
-
-            steps {
-
- 
+           steps {
 
                 echo "Using Selenium to run integration tests on staging"
-
- 
-
             }
-
- 
 
         }
 
- 
-
- 
-
-        stage('Deploy to Production') {
-
- 
+       stage('Deploy to Production') {
 
             steps {
 
- 
-
                  echo "Using AWS CLI to deploy to a production server"
-
- 
-
-            }
-
- 
-
-        }
-
- 
-
+           }
+      }
     }
-
- 
-
 }
