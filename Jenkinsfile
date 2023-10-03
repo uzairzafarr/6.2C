@@ -17,7 +17,7 @@ pipeline {
                  success{
 
                  emailext(
-                        to: 'uzairrzafar1@gmail.com',
+                        to: 'uzairali998@gmail.com',
                         subject: 'Build Status Email',
                         body: 'Build was successful',
                         attachLog: true
